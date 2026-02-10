@@ -51,7 +51,7 @@ export function Navbar() {
             alt="Drewniana Noga logo"
             width={1612}
             height={1217}
-            className="h-10 w-auto"
+            className="h-10 w-auto grayscale brightness-0 invert"
             priority
           />
           <span className="hidden font-display text-lg font-light tracking-[0.25em] text-stone-100 sm:inline">
