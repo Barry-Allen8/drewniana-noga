@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
@@ -43,9 +44,19 @@ export function Navbar() {
         <Link
           href="/"
           onClick={closeMobile}
-          className="font-display text-lg font-light tracking-[0.25em] text-stone-100 transition-opacity hover:opacity-80"
+          className="flex items-center gap-3 transition-opacity hover:opacity-80"
         >
-          DREWNIANA NOGA
+          <Image
+            src="/img/Drewniana noga logo.png"
+            alt="Drewniana Noga logo"
+            width={1612}
+            height={1217}
+            className="h-10 w-auto"
+            priority
+          />
+          <span className="hidden font-display text-lg font-light tracking-[0.25em] text-stone-100 sm:inline">
+            DREWNIANA NOGA
+          </span>
         </Link>
 
         {/* Desktop links */}
