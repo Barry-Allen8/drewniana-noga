@@ -34,7 +34,7 @@ export function GalleryGrid() {
         {GALLERY_ITEMS.map((item, i) => (
           <motion.div
             key={item.id}
-            className="group relative cursor-pointer overflow-hidden rounded-xl break-inside-avoid"
+            className="group relative cursor-pointer overflow-hidden rounded-2xl border border-border/70 bg-surface-soft break-inside-avoid"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-50px" }}
@@ -50,12 +50,12 @@ export function GalleryGrid() {
               sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
             />
             {/* Hover overlay */}
-            <div className="absolute inset-0 bg-gradient-to-t from-stone-950/80 via-stone-950/20 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+            <div className="absolute inset-0 bg-gradient-to-t from-foreground/85 via-foreground/20 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
             <div className="absolute inset-x-0 bottom-0 translate-y-4 p-5 opacity-0 transition-all duration-500 group-hover:translate-y-0 group-hover:opacity-100">
-              <p className="text-xs tracking-[0.2em] text-stone-400">
+              <p className="text-xs tracking-[0.2em] text-background/80">
                 {item.category}
               </p>
-              <p className="mt-1 font-display text-lg font-light text-stone-100">
+              <p className="mt-1 font-display text-lg font-semibold text-background">
                 {item.title}
               </p>
             </div>

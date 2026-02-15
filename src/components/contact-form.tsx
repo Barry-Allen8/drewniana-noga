@@ -33,13 +33,13 @@ export function ContactForm() {
     try {
       // Simulate sending
       await new Promise((r) => setTimeout(r, 1000));
-      toast.success("Wiadomość wysłana!", {
-        description: "Odezwiemy się w ciągu 24 godzin.",
+      toast.success("Wiadomosc wyslana!", {
+        description: "Odezwiemy sie w ciagu 24 godzin roboczych.",
       });
       setForm({ name: "", email: "", phone: "", message: "" });
     } catch {
-      toast.error("Coś poszło nie tak", {
-        description: "Spróbuj ponownie później.",
+      toast.error("Cos poszlo nie tak", {
+        description: "Sprobuj ponownie pozniej.",
       });
     } finally {
       setIsLoading(false);
@@ -59,23 +59,23 @@ export function ContactForm() {
         <div className="space-y-2">
           <label
             htmlFor="contact-name"
-            className="text-sm font-medium tracking-wide text-stone-400"
+            className="text-sm font-medium tracking-wide text-muted-foreground"
           >
-            Imię i nazwisko *
+            Imie i nazwisko *
           </label>
           <Input
             id="contact-name"
             value={form.name}
             onChange={(e) => update("name", e.target.value)}
             placeholder="Jan Kowalski"
-            className="h-12 border-stone-700 bg-stone-950/80 text-stone-100 placeholder:text-stone-600"
+            className="h-12 border-border bg-background text-foreground placeholder:text-muted-foreground"
             disabled={isLoading}
           />
         </div>
         <div className="space-y-2">
           <label
             htmlFor="contact-email"
-            className="text-sm font-medium tracking-wide text-stone-400"
+            className="text-sm font-medium tracking-wide text-muted-foreground"
           >
             E-mail *
           </label>
@@ -85,7 +85,7 @@ export function ContactForm() {
             value={form.email}
             onChange={(e) => update("email", e.target.value)}
             placeholder="jan@email.pl"
-            className="h-12 border-stone-700 bg-stone-950/80 text-stone-100 placeholder:text-stone-600"
+            className="h-12 border-border bg-background text-foreground placeholder:text-muted-foreground"
             disabled={isLoading}
           />
         </div>
@@ -94,10 +94,10 @@ export function ContactForm() {
       <div className="space-y-2">
         <label
           htmlFor="contact-phone"
-          className="text-sm font-medium tracking-wide text-stone-400"
+          className="text-sm font-medium tracking-wide text-muted-foreground"
         >
           Telefon{" "}
-          <span className="text-stone-600">(opcjonalnie)</span>
+          <span className="text-muted-foreground">(opcjonalnie)</span>
         </label>
         <Input
           id="contact-phone"
@@ -105,7 +105,7 @@ export function ContactForm() {
           value={form.phone}
           onChange={(e) => update("phone", e.target.value)}
           placeholder="+48 123 456 789"
-          className="h-12 border-stone-700 bg-stone-950/80 text-stone-100 placeholder:text-stone-600"
+          className="h-12 border-border bg-background text-foreground placeholder:text-muted-foreground"
           disabled={isLoading}
         />
       </div>
@@ -113,31 +113,31 @@ export function ContactForm() {
       <div className="space-y-2">
         <label
           htmlFor="contact-message"
-          className="text-sm font-medium tracking-wide text-stone-400"
+          className="text-sm font-medium tracking-wide text-muted-foreground"
         >
-          Wiadomość *
+          Wiadomosc *
         </label>
         <textarea
           id="contact-message"
           value={form.message}
           onChange={(e) => update("message", e.target.value)}
-          placeholder="Opisz swój projekt..."
+          placeholder="Opisz projekt, orientacyjne wymiary i oczekiwany termin."
           rows={5}
           disabled={isLoading}
-          className="w-full rounded-md border border-stone-700 bg-stone-950/80 px-3 py-3 text-sm text-stone-100 placeholder:text-stone-600 transition-[color,box-shadow] outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] disabled:opacity-50"
+          className="w-full rounded-xl border border-border bg-background px-3 py-3 text-sm text-foreground placeholder:text-muted-foreground transition-[color,box-shadow] outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] disabled:opacity-50"
         />
       </div>
 
       <Button
         type="submit"
         disabled={!isValid || isLoading}
-        className="h-12 w-full rounded-lg bg-stone-100 px-8 text-stone-950 hover:bg-stone-200 disabled:opacity-50 sm:w-auto"
+        className="h-12 w-full rounded-full bg-foreground px-8 text-background hover:bg-foreground/90 disabled:opacity-50 sm:w-auto"
       >
         {isLoading ? (
           <Loader2 className="size-5 animate-spin" />
         ) : (
           <>
-            Wyślij wiadomość
+            Wyslij wiadomosc
             <Send className="ml-2 size-4" />
           </>
         )}

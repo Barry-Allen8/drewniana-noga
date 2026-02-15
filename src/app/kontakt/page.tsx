@@ -1,100 +1,120 @@
 import type { Metadata } from "next";
-import { MapPin, Phone, Clock } from "lucide-react";
+import { Clock, Mail, MapPin, Phone } from "lucide-react";
 import { ContactForm } from "@/components/contact-form";
+import { absoluteUrl, siteConfig } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Kontakt",
   description:
-    "Skontaktuj się z nami — Piękna 13, 85-303 Bydgoszcz. Telefon: 724 239 328.",
+    "Skontaktuj sie z pracownia Drewniana Noga. Konsultacje projektowe, pomiar i realizacja mebli na wymiar w Bydgoszczy.",
+  alternates: {
+    canonical: "/kontakt",
+  },
+  openGraph: {
+    title: "Kontakt | Drewniana Noga",
+    description:
+      "Masz projekt mebli na wymiar? Napisz lub zadzwon. Odpowiadamy zwykle w ciagu 24 godzin roboczych.",
+    url: absoluteUrl("/kontakt"),
+    images: [
+      {
+        url: absoluteUrl("/img/Hero image.jpeg"),
+        width: 1600,
+        height: 1067,
+        alt: "Kontakt z pracownia Drewniana Noga",
+      },
+    ],
+  },
 };
 
 export default function KontaktPage() {
   return (
-    <main className="pt-24 pb-16 md:pt-32 md:pb-24">
-      <div className="container mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
-        <div className="mb-16 text-center">
-          <span className="mb-4 block text-sm font-medium tracking-[0.25em] text-stone-500">
-            KONTAKT
+    <main className="pb-16 pt-28 md:pb-24 md:pt-32">
+      <div className="grid-main">
+        <div className="mb-14 max-w-3xl">
+          <span className="mb-4 block text-xs font-semibold uppercase tracking-[0.22em] text-brand-muted">
+            Kontakt
           </span>
-          <h1 className="font-display text-4xl font-light tracking-wide text-stone-100 sm:text-5xl">
-            Porozmawiajmy
+          <h1 className="font-display text-balance text-4xl font-semibold tracking-tight text-foreground sm:text-5xl">
+            Porozmawiajmy o Twoim projekcie
           </h1>
-          <p className="mt-4 mx-auto max-w-xl text-stone-400">
-            Masz pomysł na meble na wymiar? Napisz do nas lub zadzwoń — chętnie
-            pomożemy.
+          <p className="mt-4 text-base leading-relaxed text-muted-foreground sm:text-lg">
+            Przeslij krotki opis, wymiary lub inspiracje. Wrocimy z propozycja
+            kolejnych krokow i orientacyjnym zakresem realizacji.
           </p>
         </div>
 
-        <div className="grid gap-12 lg:grid-cols-5">
-          {/* Contact info */}
-          <div className="space-y-8 lg:col-span-2">
-            <div className="rounded-2xl border border-stone-800/60 bg-stone-900/30 p-8 backdrop-blur-sm">
-              <h2 className="mb-6 font-display text-xl font-light tracking-wide text-stone-100">
+        <div className="grid gap-8 lg:grid-cols-12">
+          <aside className="space-y-4 lg:col-span-4">
+            <article className="rounded-2xl border border-border/70 bg-surface-soft p-6">
+              <h2 className="font-display text-2xl font-semibold tracking-tight text-foreground">
                 Dane kontaktowe
               </h2>
+              <ul className="mt-6 space-y-4 text-sm text-foreground/85">
+                <li className="flex items-start gap-3">
+                  <MapPin className="mt-0.5 size-4 shrink-0 text-brand" />
+                  <a
+                    href={siteConfig.mapUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="transition-colors hover:text-foreground"
+                  >
+                    {siteConfig.address.streetAddress}, {siteConfig.address.postalCode}{" "}
+                    {siteConfig.address.addressLocality}
+                  </a>
+                </li>
+                <li className="flex items-start gap-3">
+                  <Phone className="mt-0.5 size-4 shrink-0 text-brand" />
+                  <a href={`tel:${siteConfig.phone}`} className="transition-colors hover:text-foreground">
+                    {siteConfig.phoneDisplay}
+                  </a>
+                </li>
+                <li className="flex items-start gap-3">
+                  <Mail className="mt-0.5 size-4 shrink-0 text-brand" />
+                  <a
+                    href={`mailto:${siteConfig.email}`}
+                    className="transition-colors hover:text-foreground"
+                  >
+                    {siteConfig.email}
+                  </a>
+                </li>
+                <li className="flex items-start gap-3">
+                  <Clock className="mt-0.5 size-4 shrink-0 text-brand" />
+                  <span>{siteConfig.openingHoursDisplay}</span>
+                </li>
+              </ul>
+            </article>
 
-              <div className="space-y-6">
-                <a
-                  href="https://maps.google.com/?q=Piekna+13+Bydgoszcz"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group flex items-start gap-4 text-stone-400 transition-colors hover:text-stone-200"
-                >
-                  <div className="flex size-10 shrink-0 items-center justify-center rounded-lg border border-stone-700/50 bg-stone-950/50">
-                    <MapPin className="size-4 text-stone-500 transition-colors group-hover:text-stone-400" />
-                  </div>
-                  <div>
-                    <p className="text-sm font-medium text-stone-300">Adres</p>
-                    <p className="mt-0.5 text-sm text-stone-500">
-                      Piękna 13, 85-303 Bydgoszcz
-                    </p>
-                  </div>
-                </a>
+            <article className="rounded-2xl border border-border/70 bg-background p-6">
+              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-brand-muted">
+                Czas odpowiedzi
+              </p>
+              <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                Na formularze odpowiadamy zwykle w ciagu 24 godzin roboczych.
+                Pilne sprawy najlepiej zglaszac telefonicznie.
+              </p>
+              <a
+                href={`tel:${siteConfig.phone}`}
+                className="mt-5 inline-flex h-10 items-center justify-center rounded-full bg-foreground px-5 text-sm font-medium text-background transition-colors hover:bg-foreground/90"
+              >
+                Zadzwon teraz
+              </a>
+            </article>
+          </aside>
 
-                <a
-                  href="tel:724239328"
-                  className="group flex items-start gap-4 text-stone-400 transition-colors hover:text-stone-200"
-                >
-                  <div className="flex size-10 shrink-0 items-center justify-center rounded-lg border border-stone-700/50 bg-stone-950/50">
-                    <Phone className="size-4 text-stone-500 transition-colors group-hover:text-stone-400" />
-                  </div>
-                  <div>
-                    <p className="text-sm font-medium text-stone-300">
-                      Telefon
-                    </p>
-                    <p className="mt-0.5 text-sm text-stone-500">
-                      724 239 328
-                    </p>
-                  </div>
-                </a>
-
-                <div className="flex items-start gap-4 text-stone-400">
-                  <div className="flex size-10 shrink-0 items-center justify-center rounded-lg border border-stone-700/50 bg-stone-950/50">
-                    <Clock className="size-4 text-stone-500" />
-                  </div>
-                  <div>
-                    <p className="text-sm font-medium text-stone-300">
-                      Godziny pracy
-                    </p>
-                    <p className="mt-0.5 text-sm text-stone-500">
-                      Pon–Pt: 8:00–17:00
-                    </p>
-                    <p className="text-sm text-stone-500">Sob: 9:00–13:00</p>
-                  </div>
-                </div>
+          <section className="lg:col-span-8">
+            <div className="rounded-2xl border border-border/70 bg-background p-6 sm:p-8">
+              <h2 className="font-display text-2xl font-semibold tracking-tight text-foreground">
+                Formularz zapytania
+              </h2>
+              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                Im wiecej szczegolow podasz, tym szybciej przygotujemy konkretna
+                odpowiedz.
+              </p>
+              <div className="mt-8">
+                <ContactForm />
               </div>
             </div>
-          </div>
-
-          {/* Contact form */}
-          <div className="lg:col-span-3">
-            <div className="rounded-2xl border border-stone-800/60 bg-stone-900/30 p-8 backdrop-blur-sm md:p-10">
-              <h2 className="mb-8 font-display text-xl font-light tracking-wide text-stone-100">
-                Formularz kontaktowy
-              </h2>
-              <ContactForm />
-            </div>
-          </div>
+          </section>
         </div>
       </div>
     </main>

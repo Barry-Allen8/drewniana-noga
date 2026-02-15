@@ -47,7 +47,7 @@ export function Navbar() {
           className="flex items-center gap-3 transition-opacity hover:opacity-80"
         >
           <Image
-            src="/img/Drewniana noga logo.png"
+            src="/img/Drewniana noga logo.jpg"
             alt="Drewniana Noga logo"
             width={1612}
             height={1217}
